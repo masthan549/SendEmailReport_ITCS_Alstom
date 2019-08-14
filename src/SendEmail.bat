@@ -1,0 +1,1 @@
+python C:\Users\402096\Documents\Automation\Python_Automation\SendEmailReport\src\SendEmail.py

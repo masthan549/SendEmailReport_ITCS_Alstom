@@ -1,0 +1,8 @@
+Alstom Email address (From):: masthanvali.syed@alstomgroup.com
+Alstom Email address (To):: masthanvali.syed@alstomgroup.com
+Alstom Email Password:: Masthan549@Q4
+License Application workbook Path:: C:\Users\402096\Documents\Automation\Python_Automation\SendEmailReport\src\LicenseExpDate.xlsx
+sheetName = "LicenseFile" 
+ApplicationNameCellInSheet:: B
+DateOfExpOfApplication:: C
+appExpDateBefore(in Days):: 1

@@ -1,6 +1,6 @@
 Alstom Email address (From):: masthanvali.syed@alstomgroup.com
 Alstom Email address (To):: masthanvali.syed@alstomgroup.com
-Alstom Email Password:: Masthan549@Q4
+Alstom Email Password:: <Enter password here>
 License Application workbook Path:: C:\Users\402096\Documents\Automation\Python_Automation\SendEmailReport\src\LicenseExpDate.xlsx
 sheet Name :: LicenseFile 
 Application Name Cell In Sheet:: B

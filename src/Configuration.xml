@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <LicenseAdminName>Masthan</LicenseAdminName>
+  <AlstomEmailID>masthanvali.syed@alstomgroup.com</AlstomEmailID>
+  <AlstomEmailPassword>Masthan549@Q4</AlstomEmailPassword>
+  <AlstomLicenseWorkbookTrackerPath>C:\Users\402096\Documents\Automation\Python_Automation\SendEmailReport\src\Licenses Tracker.xlsx</AlstomLicenseWorkbookTrackerPath>
+  <SheetNameInWorkbook>License Tracker</SheetNameInWorkbook>
+  <ApplicationNameColNameInSheet>B</ApplicationNameColNameInSheet>
+  <DateOfExpiryColOfAnApplication>D</DateOfExpiryColOfAnApplication>
+  <ProjectNameColWhereLicenseAppUsed>C</ProjectNameColWhereLicenseAppUsed>
+  <ProjectManagerNameCol>F</ProjectManagerNameCol>
+  <ProjectManagerEmailIdCol>E</ProjectManagerEmailIdCol>
+  <LicenseExpireNumberDaysBefore>5</LicenseExpireNumberDaysBefore>
+</Configuration>

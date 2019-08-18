@@ -6,6 +6,8 @@ Pre-requisits for this tool enhancement:
    5. Packages used here is : xlrd
 
 Usage:
-   1. "Configuration.txt" file details must need to be filled before running this application. 
-   2. This tool reads Licensed workbook detail provided in "Configuration.txt" file.
-   3. Make sure that this tool present where the application present.
+   1. "Configuration.xml" file details must need to be filled before running this application. 
+   2. This tool reads Licensed workbook detail provided in "Configuration.xml" file.
+   3. XML notepad software best to fill details in xml (its optional) 
+   4. Make sure that this tool present where the application present.
+   5. Make sure licensed applications listed from row number 2.

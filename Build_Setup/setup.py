@@ -7,7 +7,7 @@ EXE = '../src/ReadApplicationLicenseExpDate'
 filename = EXE+'.py'
 
 includefiles = ['../src/ReadConfiguration.py', '../src/SendEmail.py']
-packages = ['xlrd', 'smtplib']
+packages = ['xlrd', 'smtplib', 'email.mime']
 
 base = None
 if (sys.platform == "win32"):

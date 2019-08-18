@@ -1,16 +1,13 @@
-import ReadConfiguration
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # Python code to illustrate Sending mail from  alstom email id 
 import smtplib, datetime 
 
-def sendEmail(message, ExpiryDays):
+def sendSummaryEmail(message, ExpiryDays, fromEmailId, pwdOfEmail, toEmailId, LicenseAdminName, ccEmailId):
 
     try: 
         print("\nSending an email. Please wait...")        
-        #Read email id user name and password
-        fromEmailId = ReadConfiguration.userFromEmailId
-        toEmailId = ReadConfiguration.userToEmailId
-        pwdOfEmail = ReadConfiguration.userPwd
 
         # creates SMTP session
         s = smtplib.SMTP('outlook.office365.com', 587) 
@@ -23,14 +20,47 @@ def sendEmail(message, ExpiryDays):
  
         # message to be sent
         dt= datetime.datetime.now()
-        EMailMessage = 'Subject: {}\n\n{}'.format("Licensed application expiry details on: "+str(dt), "There are no application which are expiring in next "+ str(ExpiryDays)+" days")
+        msg = MIMEMultipart('alternative') 
+        msg['Subject'] = "Licensed application expiry details on: "+str(dt)
+        msg['From'] = fromEmailId
+        msg['To'] = toEmailId
+        if len(ccEmailId) > 0:
+            msg['cc'] = ccEmailId      
+
+        EMailMessage = """\
+        <html>
+        <head></head>
+        <body>
+            Hi,<br><br>
+                There are no application which are expiring in next """+ str(ExpiryDays)+""" days<br><br>
+            Regards,<br>
+            """+LicenseAdminName+"""<br>       
+        </body>
+        </html>
+        """
+             
         
         if len(message) > 2:
-            bodyOfMessage = "Hi, \n"+message+"\n\nRegards,\nRaghavendra's support team"
-            EMailMessage = 'Subject: {}\n\n{}'.format("Licensed application expiry details on: "+str(dt), bodyOfMessage) 
+            EMailMessage = """\
+            <html>
+            <head></head>
+            <body>
+                Hi,<br>
+                """+ message+""" days<br><br>
+                Regards,<br>
+                """+LicenseAdminName+"""<br>       
+            </body>
+            </html>
+            """
+
+            #msg = "Hi, \n"+EMailMessage+"\n\nRegards,\nRaghavendra's support team"
+            #EMailMessage = 'Subject: {}\n\n{}'.format("Licensed application expiry details on: "+str(dt), bodyOfMessage) 
+
+        message_mime = MIMEText(EMailMessage, 'html')
+        msg.attach(message_mime)  
 
         # sending the mail 
-        s.sendmail(fromEmailId, toEmailId, EMailMessage) 
+        s.sendmail(fromEmailId, toEmailId, msg.as_string()) 
   
         # terminating the session 
         s.quit()

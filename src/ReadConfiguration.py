@@ -1,27 +1,41 @@
+import xml.etree.ElementTree as ET
 import os
 
 try:
-    emailID_from = open("Configuration.txt").readlines()[0]
-    emailID_to = open("Configuration.txt").readlines()[1]
-    pwd = open("Configuration.txt").readlines()[2]
-    workbookName = open("Configuration.txt").readlines()[3]
-    sheetName = open("Configuration.txt").readlines()[4]
-    appNameInSheetColumn = open("Configuration.txt").readlines()[5]
-    dateOfExpOfApplication = open("Configuration.txt").readlines()[6]
-    appExp = open("Configuration.txt").readlines()[7]
-                   
-    userFromEmailId = emailID_from.split("::")[1].strip()
-    userToEmailId = emailID_to.split("::")[1].strip() 
-    userPwd = pwd.split("::")[1].strip()
-    ApplicationExpiryWorkbookLoc = workbookName.split("::")[1].strip()
-    sheetNameInWorkbook = sheetName.split("::")[1].strip()
-    appNameColumnInWorkbook = appNameInSheetColumn.split("::")[1].strip()
-    appExpDate = dateOfExpOfApplication.split("::")[1].strip()
-    appExpiryDaysBefore = appExp.split("::")[1].strip()
+
+    tree = ET.parse("Configuration.xml")
+    root = tree.getroot()
+   
+    #XML tag names
+    LicenseAdminName = ""
+    AlstomEmailID = ""
+    AlstomEmailPassword = ""
+    AlstomLicenseWorkbookTrackerPath = ""    
+    SheetNameInWorkbook = ""
+    ApplicationNameColNameInSheet = ""
+    DateOfExpiryColOfAnApplication = ""
+    ProjectNameColWhereLicenseAppUsed = ""
+    ProjectManagerNameCol = ""
+    ProjectManagerEmailIdCol = ""
+    LicenseExpireNumberDaysBefore = ""
+
+    for element in root:
+        if element.tag == "LicenseAdminName": LicenseAdminName = element.text
+        if element.tag == "AlstomEmailID": AlstomEmailID = element.text
+        if element.tag == "AlstomEmailPassword": AlstomEmailPassword = element.text
+        if element.tag == "AlstomLicenseWorkbookTrackerPath": AlstomLicenseWorkbookTrackerPath = element.text
+        if element.tag == "SheetNameInWorkbook": SheetNameInWorkbook = element.text
+        if element.tag == "ApplicationNameColNameInSheet": ApplicationNameColNameInSheet = element.text
+        if element.tag == "DateOfExpiryColOfAnApplication": DateOfExpiryColOfAnApplication = element.text
+        if element.tag == "ProjectNameColWhereLicenseAppUsed": ProjectNameColWhereLicenseAppUsed = element.text
+        if element.tag == "ProjectManagerNameCol": ProjectManagerNameCol = element.text
+        if element.tag == "ProjectManagerEmailIdCol": ProjectManagerEmailIdCol = element.text
+        if element.tag == "LicenseExpireNumberDaysBefore": LicenseExpireNumberDaysBefore = element.text                                                                                
     
     #Check if spread sheet exist
-    if not os.path.exists(ApplicationExpiryWorkbookLoc):
+    if not os.path.exists(AlstomLicenseWorkbookTrackerPath):
         print("License file doesnt exist in given path!")
+
 
 except Exception as e:
     print("\nException thrown while reading data from configuration file: "+str(e))
